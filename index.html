@@ -1,768 +1,792 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nomatter Ndunga | MSc Geomatics Engineer & WebGIS Developer</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        mono: ['Fira Code', 'monospace'],
-                    },
-                    colors: {
-                        geo: {
-                            950: '#080d1a',
-                            900: '#0f172a',
-                            800: '#1e293b',
-                            700: '#334155',
-                            accent: '#38bdf8',
-                            emerald: '#10b981',
-                            amber: '#f59e0b',
-                        }
-                    }
-                }
-            }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nomatter Ndunga | MSc Geomatics Engineering Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: { 50: '#f0f9ff', 100: '#e0f2fe', 500: '#0284c7', 600: '#0284c7', 700: '#0369a1', 800: '#075985', 900: '#0c4a6e', 950: '#082f49' },
+            accent: { emerald: '#10b981', amber: '#f59e0b' }
+          }
         }
-    </script>
-    <style>
-        .filter-btn.active {
-            background-color: #0284c7;
-            color: #ffffff;
-            border-color: #38bdf8;
-            box-shadow: 0 0 12px rgba(56, 189, 248, 0.25);
-        }
-        body.modal-open {
-            overflow: hidden;
-        }
-        .code-scroll::-webkit-scrollbar {
-            height: 6px;
-            width: 6px;
-        }
-        .code-scroll::-webkit-scrollbar-thumb {
-            background: #334155;
-            border-radius: 3px;
-        }
-    </style>
+      }
+    }
+  </script>
 </head>
-<body class="bg-geo-950 text-slate-100 font-sans antialiased selection:bg-sky-500 selection:text-slate-900">
+<body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-brand-500 selection:text-white">
 
-    <!-- Top Navigation Bar -->
-    <nav class="sticky top-0 z-40 bg-geo-950/90 backdrop-blur-md border-b border-slate-800/80 px-6 py-4">
-        <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <a href="#" class="text-lg font-bold tracking-tight flex items-center gap-2 text-white">
-                <span class="w-3 h-3 rounded-full bg-sky-400 animate-pulse"></span>
-                <span class="font-mono text-sky-400">&lt;Nomatter.Ndunga /&gt;</span>
-                <span class="text-xs font-normal text-slate-400 hidden sm:inline">| MSc Geomatics Engineer</span>
-            </a>
-            <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-300">
-                <a href="#about" class="hover:text-sky-400 transition">About</a>
-                <a href="#dissertation" class="hover:text-sky-400 transition">Dissertation Case Study</a>
-                <a href="#sql-terminal" class="hover:text-sky-400 transition">Spatial SQL</a>
-                <a href="#gallery" class="hover:text-sky-400 transition">Portfolio Gallery (24)</a>
-                <a href="#contact" class="px-4 py-2 bg-sky-600 hover:bg-sky-500 text-white rounded-lg text-xs font-semibold transition shadow-lg shadow-sky-600/20">Get in Touch</a>
-            </div>
+  <!-- Navigation -->
+  <nav class="fixed top-0 w-full z-50 bg-slate-900/80 backdrop-blur-md border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-accent-emerald flex items-center justify-center font-bold text-lg shadow-lg shadow-brand-500/20">
+          <i class="fa-solid font-mono text-white text-sm">&lt;/&gt;</i>
         </div>
-    </nav>
+        <div>
+          <span class="font-bold text-lg tracking-tight text-white block">Nomatter Ndunga, MSc</span>
+          <span class="text-xs text-slate-400 block -mt-1 font-mono">Geospatial Engineer | Spatial Data Scientist</span>
+        </div>
+      </div>
+      <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-300">
+        <a href="#about" class="hover:text-brand-500 transition-colors">About</a>
+        <a href="#projects" class="hover:text-brand-500 transition-colors">Map Artifacts (24)</a>
+        <a href="#research" class="hover:text-brand-500 transition-colors">Research & Awards</a>
+        <a href="#terminal" class="hover:text-brand-500 transition-colors">PostGIS Terminal</a>
+      </div>
+      <a href="https://github.com/NomahChimbz/portfolio" target="_blank" class="px-4 py-2 rounded-lg bg-brand-600 hover:bg-brand-500 text-white font-medium text-sm transition-all shadow-md shadow-brand-600/20 flex items-center gap-2">
+        <i class="fa-brands fa-github"></i> GitHub Repo
+      </a>
+    </div>
+  </nav>
 
-    <!-- Header / Hero Section -->
-    <header id="about" class="max-w-7xl mx-auto px-6 py-16 md:py-24 grid lg:grid-cols-12 gap-12 items-center border-b border-slate-800/80">
+  <!-- Hero Section -->
+  <header id="about" class="pt-32 pb-20 relative overflow-hidden bg-gradient-to-b from-slate-900 via-slate-950 to-slate-950 border-b border-slate-800/60">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid lg:grid-cols-12 gap-12 items-center">
         <div class="lg:col-span-7 space-y-6">
-            <div class="inline-flex items-center gap-2 bg-slate-900 border border-slate-800 px-3 py-1.5 rounded-full text-xs font-mono text-sky-400">
-                <i class="fa-solid fa-graduation-cap text-amber-400"></i> MSc Geomatics Engineering (Merit) &bull; University of Zimbabwe
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-500/10 border border-brand-500/30 text-brand-500 text-xs font-mono">
+            <span class="w-2 h-2 rounded-full bg-accent-emerald animate-pulse"></span>
+            MSc Geomatics Engineering | Vice Chancellor's Award Winner
+          </div>
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
+            Spatial Data Science, <span class="bg-gradient-to-r from-brand-500 to-accent-emerald bg-clip-text text-transparent">PostGIS Engineering</span> & WebGIS Solutions
+          </h1>
+          <p class="text-slate-300 text-lg leading-relaxed">
+            Specializing in enterprise spatial database architecture, automated mineral exploration modeling, multispectral satellite remote sensing, and custom WebGIS applications.
+          </p>
+          <div class="flex flex-wrap gap-3 pt-2">
+            <span class="px-3 py-1.5 rounded-md bg-slate-900 border border-slate-800 text-xs font-mono text-slate-300"><i class="fa-solid fa-database text-brand-500 mr-1.5"></i>PostgreSQL / PostGIS</span>
+            <span class="px-3 py-1.5 rounded-md bg-slate-900 border border-slate-800 text-xs font-mono text-slate-300"><i class="fa-solid fa-layer-group text-accent-emerald mr-1.5"></i>QGIS / ArcGIS Pro</span>
+            <span class="px-3 py-1.5 rounded-md bg-slate-900 border border-slate-800 text-xs font-mono text-slate-300"><i class="fa-brands fa-python text-amber-400 mr-1.5"></i>Python / PyQGIS</span>
+            <span class="px-3 py-1.5 rounded-md bg-slate-900 border border-slate-800 text-xs font-mono text-slate-300"><i class="fa-solid fa-globe text-brand-500 mr-1.5"></i>Leaflet.js / OpenLayers</span>
+            <span class="px-3 py-1.5 rounded-md bg-slate-900 border border-slate-800 text-xs font-mono text-slate-300"><i class="fa-solid fa-satellite text-cyan-400 mr-1.5"></i>ENVI Remote Sensing</span>
+          </div>
+        </div>
+        <div class="lg:col-span-5">
+          <div class="p-6 rounded-2xl bg-slate-900 border border-slate-800 shadow-2xl relative">
+            <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+              <span class="text-xs font-mono text-slate-400">RESEARCH HIGHLIGHT</span>
+              <span class="text-xs font-mono text-accent-emerald bg-accent-emerald/10 px-2 py-0.5 rounded">AWARD WINNING</span>
             </div>
-            <h1 class="text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-tight">
-                Geospatial Engineering, <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-teal-300 to-emerald-400">Spatial SQL & WebGIS</span> Architecture
-            </h1>
-            <p class="text-slate-300 text-base md:text-lg leading-relaxed font-light">
-                Specializing in automated spatial database design (<span class="font-mono text-sky-300">PostgreSQL/PostGIS</span>), 3-tier WebGIS application development, satellite remote sensing for mineral exploration, geohazard susceptibility modeling, and topological cadastral conflict detection.
+            <h3 class="text-xl font-bold text-white mt-4">Automated Mining Rights WebGIS</h3>
+            <p class="text-slate-400 text-sm mt-2 leading-relaxed">
+              3-Tier WebGIS & PostGIS engine for automated title overlap detection and spatial regulatory management under the Mines and Minerals Act.
             </p>
-
-            <!-- Tech Badges -->
-            <div class="pt-2">
-                <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider block mb-3 font-mono">Core Engineering Stack:</span>
-                <div class="flex flex-wrap gap-2 text-xs font-mono">
-                    <span class="px-3 py-1.5 bg-slate-900 border border-slate-800 text-sky-300 rounded-md flex items-center gap-1.5"><i class="fa-solid fa-database text-sky-400"></i> PostGIS / PostgreSQL</span>
-                    <span class="px-3 py-1.5 bg-slate-900 border border-slate-800 text-emerald-300 rounded-md flex items-center gap-1.5"><i class="fa-solid fa-layer-group text-emerald-400"></i> QGIS / ArcGIS Pro</span>
-                    <span class="px-3 py-1.5 bg-slate-900 border border-slate-800 text-amber-300 rounded-md flex items-center gap-1.5"><i class="fa-brands fa-python text-amber-400"></i> Python / R Spatial</span>
-                    <span class="px-3 py-1.5 bg-slate-900 border border-slate-800 text-purple-300 rounded-md flex items-center gap-1.5"><i class="fa-solid fa-globe text-purple-400"></i> Leaflet.js / OpenLayers</span>
-                    <span class="px-3 py-1.5 bg-slate-900 border border-slate-800 text-rose-300 rounded-md flex items-center gap-1.5"><i class="fa-solid fa-satellite text-rose-400"></i> ENVI Remote Sensing</span>
-                </div>
+            <div class="mt-6 pt-4 border-t border-slate-800/80 grid grid-cols-2 gap-4 text-center">
+              <div class="bg-slate-950 p-3 rounded-lg border border-slate-800">
+                <span class="block text-2xl font-bold text-brand-500">100%</span>
+                <span class="text-xs text-slate-400">Overlap Detection</span>
+              </div>
+              <div class="bg-slate-950 p-3 rounded-lg border border-slate-800">
+                <span class="block text-2xl font-bold text-accent-emerald">PostGIS</span>
+                <span class="text-xs text-slate-400">ST_Intersection Engine</span>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
+    </div>
+  </header>
 
-        <!-- Technical Credential Card -->
-        <div class="lg:col-span-5 bg-gradient-to-b from-slate-900 to-geo-950 p-6 rounded-2xl border border-slate-800 shadow-2xl space-y-5">
-            <div class="flex justify-between items-center border-b border-slate-800 pb-4">
-                <div>
-                    <h3 class="font-bold text-white text-lg">Nomatter Ndunga</h3>
-                    <p class="text-xs font-mono text-sky-400">Geospatial Domain Specialist</p>
-                </div>
-                <span class="px-2.5 py-1 bg-emerald-950/80 border border-emerald-500/40 text-emerald-400 text-[11px] font-mono rounded-full flex items-center gap-1">
-                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span> Active Portfolio
-                </span>
-            </div>
-
-            <div class="space-y-3 text-xs text-slate-300 font-mono">
-                <div class="p-3 bg-geo-950 rounded-lg border border-slate-800/80 space-y-1">
-                    <div class="text-slate-400 text-[10px] uppercase tracking-wider">Academic Honors</div>
-                    <div class="text-amber-300 font-sans font-medium">Vice Chancellor's Award & Overall Theme 4 Award</div>
-                    <div class="text-slate-400 font-sans text-[11px]">UZ Research Week (Unified Mining Rights Portal & Spatial DB)</div>
-                </div>
-
-                <div class="grid grid-cols-2 gap-3">
-                    <div class="p-3 bg-geo-950 rounded-lg border border-slate-800/80">
-                        <div class="text-slate-400 text-[10px] uppercase">Catalog Artifacts</div>
-                        <div class="text-lg font-bold text-white mt-0.5">24 Products</div>
-                    </div>
-                    <div class="p-3 bg-geo-950 rounded-lg border border-slate-800/80">
-                        <div class="text-slate-400 text-[10px] uppercase">Domain Scope</div>
-                        <div class="text-lg font-bold text-white mt-0.5">5 Categories</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- MSc Dissertation Feature Spotlight -->
-    <section id="dissertation" class="max-w-7xl mx-auto px-6 py-16 border-b border-slate-800/80">
-        <div class="bg-gradient-to-r from-slate-900 via-geo-900 to-slate-900 p-8 md:p-10 rounded-2xl border border-slate-800 shadow-2xl relative overflow-hidden">
-            <div class="absolute -right-16 -bottom-16 opacity-10 pointer-events-none">
-                <i class="fa-solid fa-diagram-project text-[240px] text-sky-400"></i>
-            </div>
-            
-            <div class="relative z-10 space-y-6">
-                <div class="inline-flex items-center gap-2 bg-sky-950/80 border border-sky-500/40 text-sky-300 text-xs font-mono px-3 py-1 rounded-full">
-                    <i class="fa-solid fa-award text-amber-400"></i> MSc Dissertation & Vice Chancellor's Award Project
-                </div>
-
-                <div class="grid lg:grid-cols-12 gap-8 items-center">
-                    <div class="lg:col-span-7 space-y-4">
-                        <h2 class="text-2xl md:text-3xl font-bold text-white tracking-tight">
-                            3-Tier WebGIS & Automated Mining Rights Overlap Detection Portal
-                        </h2>
-                        <p class="text-slate-300 text-sm md:text-base leading-relaxed font-light">
-                            Designed and deployed an end-to-end spatial database system that automates the identification and resolution of overlapping mineral title applications under the Mines and Minerals Act. The architecture integrates spatial topology rules, SQL database triggers, and a lightweight web front-end.
-                        </p>
-
-                        <div class="grid sm:grid-cols-3 gap-4 pt-2">
-                            <div class="bg-geo-950/80 p-3 rounded-lg border border-slate-800 text-xs">
-                                <span class="text-slate-400 block font-mono text-[10px] uppercase">Database Engine</span>
-                                <span class="font-bold text-sky-300 font-mono">PostgreSQL / PostGIS</span>
-                            </div>
-                            <div class="bg-geo-950/80 p-3 rounded-lg border border-slate-800 text-xs">
-                                <span class="text-slate-400 block font-mono text-[10px] uppercase">Spatial API / Auth</span>
-                                <span class="font-bold text-emerald-300 font-mono">Supabase BaaS</span>
-                            </div>
-                            <div class="bg-geo-950/80 p-3 rounded-lg border border-slate-800 text-xs">
-                                <span class="text-slate-400 block font-mono text-[10px] uppercase">Web Mapping</span>
-                                <span class="font-bold text-purple-300 font-mono">Leaflet.js + QGIS</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="lg:col-span-5 bg-geo-950 p-5 rounded-xl border border-slate-800 space-y-3 text-xs font-mono">
-                        <div class="text-slate-400 border-b border-slate-800 pb-2 font-bold uppercase tracking-wider flex justify-between items-center">
-                            <span>System Workflow Logic</span>
-                            <i class="fa-solid fa-gear text-sky-400"></i>
-                        </div>
-                        <ul class="space-y-2 text-slate-300">
-                            <li class="flex items-start gap-2">
-                                <i class="fa-solid fa-check text-emerald-400 mt-0.5"></i>
-                                <span><strong>Polygon Ingestion:</strong> Applicant uploads geo-referenced mining claim polygon.</span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <i class="fa-solid fa-check text-emerald-400 mt-0.5"></i>
-                                <span><strong>PostGIS Trigger:</strong> Executes <code class="text-sky-300">ST_Overlaps</code> & <code class="text-sky-300">ST_Intersection</code> against active concessions.</span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <i class="fa-solid fa-check text-emerald-400 mt-0.5"></i>
-                                <span><strong>Conflict Area Output:</strong> Computes exact encroached area ($m^2$) and flags cadastral boundary violations.</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Interactive Spatial SQL Code Terminal Section -->
-    <section id="sql-terminal" class="max-w-7xl mx-auto px-6 py-16 border-b border-slate-800/80">
-        <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
-            <div>
-                <span class="text-xs font-mono text-sky-400 uppercase tracking-widest font-semibold block mb-1">Interactive Code Playground</span>
-                <h2 class="text-2xl md:text-3xl font-bold text-white tracking-tight">PostGIS Spatial Query Architecture</h2>
-            </div>
-            <p class="text-slate-400 text-xs max-w-md font-light">
-                Direct demonstration of spatial database procedures utilized in cadastral validation and vector spatial analytics.
-            </p>
-        </div>
-
-        <div class="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden shadow-2xl">
-            <!-- Terminal Header -->
-            <div class="bg-slate-950 px-4 py-3 border-b border-slate-800 flex items-center justify-between">
-                <div class="flex items-center space-x-2">
-                    <span class="w-3 h-3 rounded-full bg-rose-500 inline-block"></span>
-                    <span class="w-3 h-3 rounded-full bg-amber-500 inline-block"></span>
-                    <span class="w-3 h-3 rounded-full bg-emerald-500 inline-block"></span>
-                    <span class="text-xs font-mono text-slate-400 ml-2">cadastral_overlap_trigger.sql — PostgreSQL 16 / PostGIS 3.4</span>
-                </div>
-                <span class="text-[11px] font-mono text-sky-400"><i class="fa-solid fa-terminal mr-1"></i> Spatial SQL</span>
-            </div>
-
-            <!-- Terminal Code Window -->
-            <div class="p-6 font-mono text-xs md:text-sm text-slate-300 bg-geo-950 overflow-x-auto code-scroll leading-relaxed">
-<pre><code class="language-sql"><span class="text-purple-400">CREATE OR REPLACE FUNCTION</span> <span class="text-blue-300">check_mining_claim_overlap</span>()
-<span class="text-purple-400">RETURNS TRIGGER AS</span> $$
-<span class="text-purple-400">DECLARE</span>
-    v_conflict_count <span class="text-amber-300">INTEGER</span>;
-    v_overlap_area   <span class="text-amber-300">NUMERIC</span>;
-<span class="text-purple-400">BEGIN</span>
-    <span class="text-slate-500">-- 1. Reproject incoming geometry to national grid (UTM Zone 36S / EPSG:32736)</span>
-    NEW.geom := <span class="text-sky-300">ST_Transform</span>(NEW.geom, <span class="text-amber-300">32736</span>);
-
-    <span class="text-slate-500">-- 2. Detect topological intersections against active concessions</span>
-    <span class="text-purple-400">SELECT</span> <span class="text-sky-300">COUNT</span>(*), <span class="text-sky-300">COALESCE</span>(<span class="text-sky-300">SUM</span>(<span class="text-sky-300">ST_Area</span>(<span class="text-sky-300">ST_Intersection</span>(c.geom, NEW.geom))), <span class="text-amber-300">0</span>)
-    <span class="text-purple-400">INTO</span> v_conflict_count, v_overlap_area
-    <span class="text-purple-400">FROM</span> active_mining_concessions c
-    <span class="text-purple-400">WHERE</span> <span class="text-sky-300">ST_Overlaps</span>(c.geom, NEW.geom) 
-      <span class="text-purple-400">AND</span> c.claim_id != NEW.claim_id;
-
-    <span class="text-slate-500">-- 3. Raise conflict exception if spatial encroachment exceeds 0 sq meters</span>
-    <span class="text-purple-400">IF</span> v_conflict_count > <span class="text-amber-300">0</span> <span class="text-purple-400">THEN</span>
-        <span class="text-purple-400">RAISE EXCEPTION</span> <span class="text-emerald-300">'Cadastral Violation: Claim % encroaches % sq.m over existing title.'</span>, 
-            NEW.claim_code, <span class="text-sky-300">ROUND</span>(v_overlap_area, <span class="text-amber-300">2</span>);
-    <span class="text-purple-400">END IF</span>;
-
-    <span class="text-purple-400">RETURN</span> NEW;
-<span class="text-purple-400">END</span>;
-$$ <span class="text-purple-400">LANGUAGE</span> plpgsql;</code></pre>
-            </div>
-        </div>
-    </section>
-
-    <!-- Map Gallery Section (All 24 Products) -->
-    <section id="gallery" class="max-w-7xl mx-auto px-6 py-16">
-        <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
-            <div>
-                <span class="text-xs font-mono text-sky-400 uppercase tracking-widest font-semibold block mb-1">Complete Portfolio</span>
-                <h2 class="text-3xl font-bold text-white tracking-tight">Geospatial Analysis & Map Artifacts</h2>
-                <p class="text-slate-400 text-sm mt-1">Explore all 24 spatial projects categorized by operational domain.</p>
-            </div>
-
-            <!-- Domain Filter Tabs -->
-            <div class="flex flex-wrap gap-2 text-xs font-medium">
-                <button onclick="filterGallery('all')" class="filter-btn active px-3.5 py-2 rounded-lg border border-slate-700 bg-slate-900 text-slate-300 hover:border-sky-500 transition">All Products (24)</button>
-                <button onclick="filterGallery('mineral')" class="filter-btn px-3.5 py-2 rounded-lg border border-slate-700 bg-slate-900 text-slate-300 hover:border-sky-500 transition">Mineral Exploration</button>
-                <button onclick="filterGallery('geohazards')" class="filter-btn px-3.5 py-2 rounded-lg border border-slate-700 bg-slate-900 text-slate-300 hover:border-sky-500 transition">Geohazards & Hydrology</button>
-                <button onclick="filterGallery('terrain')" class="filter-btn px-3.5 py-2 rounded-lg border border-slate-700 bg-slate-900 text-slate-300 hover:border-sky-500 transition">Terrain Indices</button>
-                <button onclick="filterGallery('suitability')" class="filter-btn px-3.5 py-2 rounded-lg border border-slate-700 bg-slate-900 text-slate-300 hover:border-sky-500 transition">Land Suitability</button>
-                <button onclick="filterGallery('urban')" class="filter-btn px-3.5 py-2 rounded-lg border border-slate-700 bg-slate-900 text-slate-300 hover:border-sky-500 transition">Urban Analytics & WebGIS</button>
-            </div>
-        </div>
-
-        <!-- 24 Gallery Cards Grid -->
-        <div id="galleryGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <!-- Cards rendered dynamically via JavaScript below -->
-        </div>
-    </section>
-
-    <!-- Modal Lightbox for Expanded Map & Metadata Inspection -->
-    <div id="mapModal" class="fixed inset-0 z-50 bg-geo-950/90 backdrop-blur-md flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300 modal">
-        <div class="bg-slate-900 border border-slate-700 w-full max-w-5xl max-h-[92vh] rounded-2xl shadow-2xl overflow-hidden flex flex-col my-auto">
-            
-            <!-- Modal Header -->
-            <div class="px-6 py-4 border-b border-slate-800 flex justify-between items-center bg-geo-950">
-                <div>
-                    <span id="modalCategory" class="text-[10px] font-mono font-bold text-sky-400 uppercase tracking-widest">Category</span>
-                    <h3 id="modalTitle" class="text-lg md:text-xl font-bold text-white">Map Product Title</h3>
-                </div>
-                <button onclick="closeModal()" class="text-slate-400 hover:text-white p-2 rounded-lg hover:bg-slate-800 transition">
-                    <i class="fa-solid fa-xmark text-xl"></i>
-                </button>
-            </div>
-
-            <!-- Modal Body -->
-            <div class="p-6 overflow-y-auto space-y-6">
-                <!-- Image Container -->
-                <div class="bg-geo-950 rounded-xl overflow-hidden border border-slate-800 flex items-center justify-center min-h-[320px] relative">
-                    <img id="modalImage" src="" alt="Map View" class="max-h-[520px] w-auto object-contain">
-                    <div id="modalImageFallback" class="hidden p-8 text-center">
-                        <i class="fa-solid fa-map-location-dot text-5xl text-slate-700 mb-3"></i>
-                        <p class="text-sm text-slate-300 font-medium">Map Preview Artifact</p>
-                        <p id="modalImagePathText" class="text-xs font-mono text-slate-500 mt-1"></p>
-                    </div>
-                </div>
-
-                <!-- Technical Details & Parameters Grid -->
-                <div class="grid md:grid-cols-3 gap-6 pt-2">
-                    <div class="md:col-span-2 space-y-3">
-                        <h4 class="text-xs font-mono font-bold text-slate-300 uppercase tracking-wider border-b border-slate-800 pb-1">Geospatial Methodology & Analysis</h4>
-                        <p id="modalDescription" class="text-slate-300 text-sm leading-relaxed font-light"></p>
-                    </div>
-
-                    <div class="space-y-4 bg-geo-950 p-4 rounded-xl border border-slate-800">
-                        <div>
-                            <h5 class="text-[10px] font-mono text-slate-400 uppercase tracking-wider mb-2">Technical Metadata</h5>
-                            <div class="space-y-1.5 text-xs font-mono">
-                                <div class="flex justify-between text-slate-300">
-                                    <span class="text-slate-500">CRS:</span>
-                                    <span id="modalCrs">EPSG:32736 (UTM 36S)</span>
-                                </div>
-                                <div class="flex justify-between text-slate-300">
-                                    <span class="text-slate-500">Resolution:</span>
-                                    <span id="modalResolution">30m / Vector</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div>
-                            <h5 class="text-[10px] font-mono text-slate-400 uppercase tracking-wider mb-2">Tools & Algorithms</h5>
-                            <div id="modalTags" class="flex flex-wrap gap-1.5"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <!-- Projects Grid -->
+  <main id="projects" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+      <div>
+        <span class="text-xs font-mono text-brand-500 tracking-wider uppercase block">TECHNICAL PORTFOLIO ARTIFACTS</span>
+        <h2 class="text-3xl font-extrabold text-white mt-1">Geospatial Engineering Artifacts</h2>
+      </div>
+      <span class="text-slate-400 text-sm font-mono bg-slate-900 px-3 py-1.5 rounded-lg border border-slate-800">
+        Displaying 24 Verified Artifacts
+      </span>
     </div>
 
-    <!-- Contact & Footer -->
-    <footer id="contact" class="bg-geo-950 border-t border-slate-800/80 py-12 px-6">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-            <div>
-                <a href="#" class="text-lg font-bold font-mono text-sky-400">&lt;Nomatter.Ndunga /&gt;</a>
-                <p class="text-xs text-slate-400 mt-1">Geospatial Engineering, Spatial Database Systems & WebGIS Solutions</p>
-            </div>
-            <div class="flex items-center space-x-4">
-                <a href="https://github.com/NomahChimbz/portfolio" target="_blank" class="p-2.5 bg-slate-900 border border-slate-800 rounded-lg text-slate-300 hover:text-white hover:border-sky-500 transition">
-                    <i class="fa-brands fa-github text-lg"></i>
-                </a>
-            </div>
+    <!-- 24 Artifact Cards Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+      <!-- Card 1 -->
+      <div class="bg-slate-900 rounded-xl border border-slate-800 overflow-hidden flex flex-col justify-between hover:border-brand-500/50 transition-all group">
+        <div>
+          <div class="relative bg-slate-950 h-52 overflow-hidden flex items-center justify-center p-2">
+            <img src="./images/Clay_Hydrothermal%20Alteration.png" alt="Mazowe Hydrothermal Clay Alteration" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300">
+          </div>
+          <div class="p-5">
+            <span class="text-xs font-mono text-brand-500 block mb-1">Mineral Exploration</span>
+            <h3 class="text-lg font-bold text-white mb-2">Mazowe Clay Alteration Mapping</h3>
+            <p class="text-slate-400 text-xs line-clamp-3 leading-relaxed">
+              Utilized Landsat/Sentinel SWIR band ratios (SWIR1/SWIR2) to isolate hydrothermally altered kaolinite/illite clays indicating gold mineralization halos.
+            </p>
+          </div>
         </div>
-    </footer>
+        <div class="px-5 pb-5 pt-2 border-t border-slate-800/60 flex items-center justify-between">
+          <span class="text-xs font-mono text-slate-500">EPSG:32736 (UTM 36S)</span>
+          <button onclick="openModal('./images/Clay_Hydrothermal%20Alteration.png', 'Mazowe Hydrothermal Clay Alteration Mapping', 'Utilized Landsat/Sentinel multispectral imagery band ratios (SWIR1/SWIR2) to isolate hydrothermally altered clay minerals (kaolinite, illite).', 'EPSG:32736 (UTM 36S)', '30m Multispectral', ['Landsat 8', 'Band Ratios', 'ENVI'])" class="text-xs font-medium text-brand-500 hover:text-brand-400 transition-colors">
+            Expand Artifact <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i>
+          </button>
+        </div>
+      </div>
 
-    <!-- JavaScript Data Store & Interactive Rendering -->
-    <script>
-        // Array of all 24 Geospatial Map Products with distinct technical metadata
-        const mapsData = [
-            // Category: Mineral Exploration
-            {
-                id: 1,
-                category: "mineral",
-                catLabel: "Mineral Exploration",
-                title: "Mazowe Hydrothermal Clay Alteration Mapping",
-                image: "images/Clay_Hydrothermal Alteration.jpg",
-                shortDesc: "Multispectral hydrothermal clay alteration zone identification in the Mazowe greenstone belt.",
-                fullDesc: "Utilized Landsat/Sentinel multispectral imagery band ratios (SWIR1/SWIR2) to isolate hydrothermally altered clay minerals (kaolinite, illite). Highlighted alteration halos indicative of gold mineralization in the Mazowe mining district.",
-                crs: "EPSG:32736 (UTM 36S)",
-                resolution: "30m Multispectral",
-                tags: ["Landsat 8", "Band Ratios", "Hydrothermal Clay", "ENVI"]
-            },
-            {
-                id: 2,
-                category: "mineral",
-                catLabel: "Mineral Exploration",
-                title: "Mining Cadastre & Rights Overlay",
-                image: "images/Mining Cadastre.png",
-                shortDesc: "PostGIS automated spatial overlap evaluation for active mining concessions.",
-                fullDesc: "Executed PostgreSQL/PostGIS spatial queries (ST_Intersection, ST_Overlaps) to validate mining claim boundaries, detect overlap encroached areas, and enforce cadastral integrity under statutory regulations.",
-                crs: "EPSG:32736 (UTM 36S)",
-                resolution: "Vector Cadastre",
-                tags: ["PostGIS", "Cadastre", "ST_Intersection", "Spatial SQL"]
-            },
-            {
-                id: 3,
-                category: "mineral",
-                catLabel: "Mineral Exploration",
-                title: "Ferrous & Iron Oxide Mineral Index Mapping",
-                image: "images/Ferrous_Minerals.jpg",
-                shortDesc: "Spectral index mapping for iron oxides and ferrous mineral weathering halos.",
-                fullDesc: "Applied Red/Blue and SWIR/NIR spectral ratio calculations to delineate iron oxide weathering crusts and gossans, assisting regional greenfield metallic deposit targeting.",
-                tags: ["Iron Oxide", "Ferrous Index", "Remote Sensing", "QGIS"]
-            },
-            {
-                id: 4,
-                category: "mineral",
-                catLabel: "Mineral Exploration",
-                title: "Structural Lineament & Fault Extraction",
-                image: "images/Structural_Lineaments.jpg",
-                shortDesc: "Automatic lineament extraction and directional rose diagram analysis.",
-                fullDesc: "Extracted geological fault networks and fracture systems using directional shaded relief filtering on DEMs and multispectral principal component analysis (PCA).",
-                tags: ["Lineaments", "PCA", "Structural Geology", "ArcGIS Pro"]
-            },
+      <!-- Card 2 -->
+      <div class="bg-slate-900 rounded-xl border border-slate-800 overflow-hidden flex flex-col justify-between hover:border-brand-500/50 transition-all group">
+        <div>
+          <div class="relative bg-slate-950 h-52 overflow-hidden flex items-center justify-center p-2">
+            <img src="./images/landhazard.png" alt="Geotechnical Slope Hazard Assessment" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300">
+          </div>
+          <div class="p-5">
+            <span class="text-xs font-mono text-amber-500 block mb-1">Geohazard & Risk</span>
+            <h3 class="text-lg font-bold text-white mb-2">Slope Stability Risk Zonation</h3>
+            <p class="text-slate-400 text-xs line-clamp-3 leading-relaxed">
+              Integrated DEM-derived slope steepness, geotechnical soil cohesion, and rainfall trigger thresholds for landslide vulnerability modeling.
+            </p>
+          </div>
+        </div>
+        <div class="px-5 pb-5 pt-2 border-t border-slate-800/60 flex items-center justify-between">
+          <span class="text-xs font-mono text-slate-500">EPSG:32736 (UTM 36S)</span>
+          <button onclick="openModal('./images/landhazard.png', 'Geotechnical Slope Hazard Assessment', 'Integrated DEM-derived slope steepness, geotechnical soil cohesion, and historical rainfall trigger thresholds.', 'EPSG:32736 (UTM 36S)', '12.5m ALOS PALSAR', ['Slope Analysis', 'Raster Risk', 'QGIS'])" class="text-xs font-medium text-brand-500 hover:text-brand-400 transition-colors">
+            Expand Artifact <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i>
+          </button>
+        </div>
+      </div>
 
-            // Category: Geohazards & Hydrology
-            {
-                id: 5,
-                category: "geohazards",
-                catLabel: "Geohazards & Hydrology",
-                title: "Benguet Slope & Landslide Hazard Zonation",
-                image: "images/landhazard.jpg",
-                shortDesc: "Multi-factor slope stability and landslide susceptibility modeling.",
-                fullDesc: "Integrated slope steepness, elevation, lithology, rainfall intensity, and soil shear parameters to generate a classified landslide susceptibility risk map for disaster response.",
-                crs: "EPSG:32651 (UTM 51N)",
-                resolution: "12.5m ALOS PALSAR",
-                tags: ["Landslides", "Slope Stability", "Hazard Zonation", "GIS Modeling"]
-            },
-            {
-                id: 6,
-                category: "geohazards",
-                catLabel: "Geohazards & Hydrology",
-                title: "Western Rwanda High-Risk Slope Analysis",
-                image: "images/sloperisk.jpg",
-                shortDesc: "Classified slope angle model for mountainous disaster mitigation.",
-                fullDesc: "Evaluated high-gradient slope risk across mountainous sectors of Western Rwanda using DEM derivatives to inform agricultural terrace planning and infrastructure hazard buffers.",
-                crs: "EPSG:32735 (UTM 35S)",
-                resolution: "30m SRTM DEM",
-                tags: ["Slope Angle", "Rwanda", "Disaster Mitigation", "DEM"]
-            },
-            {
-                id: 7,
-                category: "geohazards",
-                catLabel: "Geohazards & Hydrology",
-                title: "Chimanimani Flood Risk & Hydrological Accumulation",
-                image: "images/Flood Hazard Map.png",
-                shortDesc: "D8 hydrological flow accumulation and flood extent mapping.",
-                fullDesc: "Computed catchment flow accumulation, Stream Power Index (SPI), and Topographic Wetness Index (TWI) using D8 direction algorithms to delimit flood risk boundaries following cyclone events.",
-                crs: "EPSG:32736 (UTM 36S)",
-                resolution: "30m DEM Hydro",
-                tags: ["Hydrology", "Flow Accumulation", "TWI", "Flood Mapping"]
-            },
-            {
-                id: 8,
-                category: "geohazards",
-                catLabel: "Geohazards & Hydrology",
-                title: "Nyanga Watershed Sub-Basin Delimitation",
-                image: "images/Watershed_Nyanga.png",
-                shortDesc: "Automated watershed catchment and stream network extraction.",
-                fullDesc: "Extracted stream hierarchy (Strahler order) and watershed catchment boundaries from DEM hydrological fill processing, aiding water resource management in Nyanga District.",
-                crs: "EPSG:32736 (UTM 36S)",
-                resolution: "30m DEM",
-                tags: ["Watershed", "Strahler Order", "QGIS Saga", "Hydrology"]
-            },
+      <!-- Card 3 -->
+      <div class="bg-slate-900 rounded-xl border border-slate-800 overflow-hidden flex flex-col justify-between hover:border-brand-500/50 transition-all group">
+        <div>
+          <div class="relative bg-slate-950 h-52 overflow-hidden flex items-center justify-center p-2">
+            <img src="./images/Flood%20Hazard%20Map.png" alt="Hydrological Flood Inundation Model" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300">
+          </div>
+          <div class="p-5">
+            <span class="text-xs font-mono text-cyan-400 block mb-1">Hydrology & Disaster</span>
+            <h3 class="text-lg font-bold text-white mb-2">Catchment Flood Vulnerability</h3>
+            <p class="text-slate-400 text-xs line-clamp-3 leading-relaxed">
+              Modeled 50-year return flood extent using Topographic Wetness Index (TWI) and stream accumulation networks.
+            </p>
+          </div>
+        </div>
+        <div class="px-5 pb-5 pt-2 border-t border-slate-800/60 flex items-center justify-between">
+          <span class="text-xs font-mono text-slate-500">EPSG:32736 (UTM 36S)</span>
+          <button onclick="openModal('./images/Flood%20Hazard%20Map.png', 'Hydrological Flood Inundation Model', 'Modeled 50-year return flood extent using Topographic Wetness Index (TWI).', 'EPSG:32736 (UTM 36S)', '30m DEM', ['TWI', 'Hydrological Modeling', 'GRASS GIS'])" class="text-xs font-medium text-brand-500 hover:text-brand-400 transition-colors">
+            Expand Artifact <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i>
+          </button>
+        </div>
+      </div>
 
-            // Category: Terrain Indices
-            {
-                id: 9,
-                category: "terrain",
-                catLabel: "Terrain Indices",
-                title: "Northern Cape Classified Topographic Position Index (TPI)",
-                image: "images/TPI.jpg",
-                shortDesc: "Landform classification into ridge, valley, and slope positions.",
-                fullDesc: "Calculated Topographic Position Index (TPI) to classify terrain into valleys, mid-slope positions, plateaus, and mountain crests across the Northern Cape landscape.",
-                crs: "EPSG:32734 (UTM 34S)",
-                resolution: "30m DEM",
-                tags: ["TPI", "Geomorphometry", "Landforms", "Terrain Analysis"]
-            },
-            {
-                id: 10,
-                category: "terrain",
-                catLabel: "Terrain Indices",
-                title: "Benguet Terrain Ruggedness Index (TRI)",
-                image: "images/TRI.jpg",
-                shortDesc: "Quantitative rugosity and micro-relief surface variability model.",
-                fullDesc: "Applied Riley's Terrain Ruggedness Index (TRI) algorithm to calculate elevation differences between adjacent pixels, quantifying surface roughness for infrastructure routing.",
-                crs: "EPSG:32651 (UTM 51N)",
-                resolution: "12.5m DEM",
-                tags: ["TRI", "Rugosity", "Micro-relief", "Geomorphology"]
-            },
-            {
-                id: 11,
-                category: "terrain",
-                catLabel: "Terrain Indices",
-                title: "Limpopo Classified Hillshade Relief Model",
-                image: "images/Hillshademapclassified.jpg",
-                shortDesc: "Multi-directional illumination model for terrain morphology.",
-                fullDesc: "Combined azimuth illumination parameters (315°, 45°) to create multi-directional hillshades, enhancing minor fault lines, ridges, and landform morphology rendering.",
-                crs: "EPSG:32735 (UTM 35S)",
-                resolution: "30m DEM",
-                tags: ["Hillshade", "Morphology", "3D Elevation", "Cartography"]
-            },
-            {
-                id: 12,
-                category: "terrain",
-                catLabel: "Terrain Indices",
-                title: "Western Rwanda High-Resolution DEM Relief",
-                image: "images/westdem.jpg",
-                shortDesc: "Digital elevation surface modeling and contour generation.",
-                fullDesc: "Processed satellite digital elevation model (DEM) datasets to generate precise relief contours and 3D surface visualizations for civil engineering and spatial planning.",
-                crs: "EPSG:32735 (UTM 35S)",
-                resolution: "30m SRTM",
-                tags: ["DEM", "Elevation Contours", "3D Relief", "QGIS"]
-            },
+      <!-- Card 4 -->
+      <div class="bg-slate-900 rounded-xl border border-slate-800 overflow-hidden flex flex-col justify-between hover:border-brand-500/50 transition-all group">
+        <div>
+          <div class="relative bg-slate-950 h-52 overflow-hidden flex items-center justify-center p-2">
+            <img src="./images/TPI.png" alt="Topographic Position Index (TPI)" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300">
+          </div>
+          <div class="p-5">
+            <span class="text-xs font-mono text-accent-emerald block mb-1">Terrain Analysis</span>
+            <h3 class="text-lg font-bold text-white mb-2">Topographic Position Index</h3>
+            <p class="text-slate-400 text-xs line-clamp-3 leading-relaxed">
+              Automated landscape classification into ridges, valleys, and slopes for geomorphological terrain characterization.
+            </p>
+          </div>
+        </div>
+        <div class="px-5 pb-5 pt-2 border-t border-slate-800/60 flex items-center justify-between">
+          <span class="text-xs font-mono text-slate-500">EPSG:32736 (UTM 36S)</span>
+          <button onclick="openModal('./images/TPI.png', 'Topographic Position Index (TPI)', 'Automated landscape classification comparing focal cell elevation to neighborhood mean elevation.', 'EPSG:32736 (UTM 36S)', '30m SRTM DEM', ['Geomorphology', 'SAGA GIS', 'Terrain Algorithms'])" class="text-xs font-medium text-brand-500 hover:text-brand-400 transition-colors">
+            Expand Artifact <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i>
+          </button>
+        </div>
+      </div>
 
-            // Category: Land Suitability
-            {
-                id: 13,
-                category: "suitability",
-                catLabel: "Land Suitability",
-                title: "Limpopo Crocodile Farming Multi-Criteria Analysis",
-                image: "images/suitable.jpg",
-                shortDesc: "Weighted Overlay Multi-Criteria Evaluation (MCE) for aquaculture siting.",
-                fullDesc: "Combined proximity to water bodies, optimal slope, thermal parameters, and road access using Analytic Hierarchy Process (AHP) weighted overlay for sustainable farm site selection.",
-                crs: "EPSG:32735 (UTM 35S)",
-                resolution: "30m Vector/Raster",
-                tags: ["MCE", "AHP", "Weighted Overlay", "Aquaculture"]
-            },
-            {
-                id: 14,
-                category: "suitability",
-                catLabel: "Land Suitability",
-                title: "Limpopo Aquaculture Slope Suitability Matrix",
-                image: "images/slopesuitabilitymap.jpg",
-                shortDesc: "Slope steepness constraint filtering for commercial pond construction.",
-                fullDesc: "Reclassified terrain slope gradients into suitability classes (<2% optimal, 2-5% suitable, >8% unsuitable) to identify feasible infrastructure development sites.",
-                crs: "EPSG:32735 (UTM 35S)",
-                resolution: "30m DEM Derivatives",
-                tags: ["Slope Matrix", "Reclassification", "Aquaculture", "MCE"]
-            },
-            {
-                id: 15,
-                category: "suitability",
-                catLabel: "Land Suitability",
-                title: "Agricultural Crop Land Capability Model",
-                image: "images/Crop_Suitability.jpg",
-                shortDesc: "Soil texture, climate, and topography overlay for crop yield modeling.",
-                fullDesc: "Overlay model evaluating soil depth, drainage, rainfall patterns, and slope gradient to identify optimal zones for arable crop production.",
-                crs: "EPSG:32736 (UTM 36S)",
-                resolution: "30m Spatial Grid",
-                tags: ["AgriGIS", "Land Capability", "Soil Overlay", "Food Security"]
-            },
-            {
-                id: 16,
-                category: "suitability",
-                catLabel: "Land Suitability",
-                title: "Solar Photovoltaic Site Selection Model",
-                image: "images/Solar_Suitability.jpg",
-                shortDesc: "Solar irradiance and transmission grid proximity mapping.",
-                fullDesc: "Evaluated Global Horizontal Irradiation (GHI), south-facing aspect, grid connection proximity, and land cover constraints to identify prime renewable solar energy sites.",
-                crs: "EPSG:32734 (UTM 34S)",
-                resolution: "30m Raster Grid",
-                tags: ["Solar PV", "Renewable Energy", "Site Selection", "Aspect"]
-            },
+      <!-- Card 5 -->
+      <div class="bg-slate-900 rounded-xl border border-slate-800 overflow-hidden flex flex-col justify-between hover:border-brand-500/50 transition-all group">
+        <div>
+          <div class="relative bg-slate-950 h-52 overflow-hidden flex items-center justify-center p-2">
+            <img src="./images/TRI.png" alt="Terrain Ruggedness Index" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300">
+          </div>
+          <div class="p-5">
+            <span class="text-xs font-mono text-accent-emerald block mb-1">Terrain Analysis</span>
+            <h3 class="text-lg font-bold text-white mb-2">Terrain Ruggedness Index (TRI)</h3>
+            <p class="text-slate-400 text-xs line-clamp-3 leading-relaxed">
+              Quantified topographic heterogeneity to support infrastructure site selection and accessibility modeling.
+            </p>
+          </div>
+        </div>
+        <div class="px-5 pb-5 pt-2 border-t border-slate-800/60 flex items-center justify-between">
+          <span class="text-xs font-mono text-slate-500">EPSG:32736 (UTM 36S)</span>
+          <button onclick="openModal('./images/TRI.png', 'Terrain Ruggedness Index (TRI)', 'Calculated root-mean-square elevation difference between adjacent cells to quantify terrain roughness.', 'EPSG:32736 (UTM 36S)', '30m DEM', ['TRI Algorithm', 'Raster Analysis', 'QGIS'])" class="text-xs font-medium text-brand-500 hover:text-brand-400 transition-colors">
+            Expand Artifact <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i>
+          </button>
+        </div>
+      </div>
 
-            // Category: Urban Analytics & WebGIS
-            {
-                id: 17,
-                category: "urban",
-                catLabel: "Urban Analytics & WebGIS",
-                title: "Northern Cape Interactive WebGIS Portal",
-                image: "images/webgis.jpg",
-                shortDesc: "Full-stack WebGIS application with Leaflet.js and PostGIS backend.",
-                fullDesc: "Designed an interactive geospatial web dashboard allowing dynamic layer filtering, spatial attribute queries, feature search, and live coordinate inspection.",
-                crs: "EPSG:4326 (WGS84 Web)",
-                resolution: "Interactive WebGIS",
-                tags: ["WebGIS", "Leaflet.js", "PostGIS", "JavaScript"]
-            },
-            {
-                id: 18,
-                category: "urban",
-                catLabel: "Urban Analytics & WebGIS",
-                title: "Nairobi Waste Accessibility & Disposal Network",
-                image: "images/wastemanagement.jpg",
-                shortDesc: "Spatial network analysis for municipal waste collection coverage.",
-                fullDesc: "Used network service area analysis to evaluate accessibility to waste collection points, identifying underserved informal settlements and optimizing waste truck routes.",
-                crs: "EPSG:32637 (UTM 37N)",
-                resolution: "OpenStreetMap Network",
-                tags: ["Urban GIS", "Network Analyst", "Waste Management", "Accessibility"]
-            },
-            {
-                id: 19,
-                category: "urban",
-                catLabel: "Urban Analytics & WebGIS",
-                title: "Harare Equity Service Audit & Public Utilities",
-                image: "images/allservices.jpg",
-                shortDesc: "Spatial buffer and coverage audit for municipal public infrastructure.",
-                fullDesc: "Analyzed spatial distribution and buffer walkability distances for schools, clinics, and clean water points to highlight equity gaps in municipal service delivery.",
-                crs: "EPSG:32736 (UTM 36S)",
-                resolution: "Urban Vector Audit",
-                tags: ["Urban Audit", "Spatial Equity", "Buffers", "Infrastructure"]
-            },
-            {
-                id: 20,
-                category: "urban",
-                catLabel: "Urban Analytics & WebGIS",
-                title: "Cape Town Urban Development Zone (UDZ) Proximity",
-                image: "images/aggregate.jpg",
-                shortDesc: "Tax incentive zone spatial aggregation and commercial property analysis.",
-                fullDesc: "Aggregated spatial commercial property metrics within Urban Development Zones (UDZ) to quantify investment density and transit corridor proximity.",
-                crs: "EPSG:32734 (UTM 34S)",
-                resolution: "Vector Parcels",
-                tags: ["Urban Analytics", "UDZ", "Property GIS", "Cape Town"]
-            },
-            {
-                id: 21,
-                category: "urban",
-                catLabel: "Urban Analytics & WebGIS",
-                title: "Cape Town Bus Rapid Transit (BRT) Catchment Network",
-                image: "images/MAPStransitbus.jpg",
-                shortDesc: "Pedestrian network catchment analysis for transit stops.",
-                fullDesc: "Generated 5-minute and 10-minute pedestrian network catchments along BRT transit corridors to measure transit-oriented development (TOD) accessibility.",
-                crs: "EPSG:32734 (UTM 34S)",
-                resolution: "Pedestrian Network",
-                tags: ["BRT Catchments", "Transit GIS", "Walkability", "Network Analyst"]
-            },
-            {
-                id: 22,
-                category: "urban",
-                catLabel: "Urban Analytics & WebGIS",
-                title: "Urban Heat Island (UHI) Surface Temperature Model",
-                image: "images/UHI_Map.jpg",
-                shortDesc: "Landsat 8 Thermal Infrared (TIRS) land surface temperature extraction.",
-                fullDesc: "Extracted Land Surface Temperature (LST) from Landsat thermal bands to measure Urban Heat Island severity against built-up density and vegetation cover (NDVI).",
-                crs: "EPSG:32736 (UTM 36S)",
-                resolution: "30m Thermal Grid",
-                tags: ["LST", "Thermal GIS", "UHI", "Landsat 8"]
-            },
-            {
-                id: 23,
-                category: "urban",
-                catLabel: "Urban Analytics & WebGIS",
-                title: "Informal Settlement Expansion & Temporal Tracking",
-                image: "images/Settlement_Growth.jpg",
-                shortDesc: "Multi-temporal satellite image classification for urban sprawl.",
-                fullDesc: "Tracked informal settlement growth and land cover transformation across a 10-year period using supervised satellite imagery classification algorithms.",
-                crs: "EPSG:32736 (UTM 36S)",
-                resolution: "10m Sentinel-2",
-                tags: ["Urban Sprawl", "Change Detection", "Supervised Class", "Sentinel-2"]
-            },
-            {
-                id: 24,
-                category: "urban",
-                catLabel: "Urban Analytics & WebGIS",
-                title: "Automated Mining Title Overlap Detection Web Portal",
-                image: "images/WebGIS_Portal.jpg",
-                shortDesc: "MSc Geomatics dissertation WebGIS prototype with automated spatial triggers.",
-                fullDesc: "3-tier WebGIS architecture integrating PostgreSQL/PostGIS, Supabase, and Leaflet.js to automatically run topological check triggers when new mining title polygons are uploaded.",
-                crs: "EPSG:4326 / EPSG:32736",
-                resolution: "Full Stack WebGIS",
-                tags: ["WebGIS", "MSc Geomatics", "PostGIS Triggers", "Supabase"]
-            }
-        ];
+      <!-- Card 6 -->
+      <div class="bg-slate-900 rounded-xl border border-slate-800 overflow-hidden flex flex-col justify-between hover:border-brand-500/50 transition-all group">
+        <div>
+          <div class="relative bg-slate-950 h-52 overflow-hidden flex items-center justify-center p-2">
+            <img src="./images/Hillshademapclassified.png" alt="Classified Hillshade & Geomorphology" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300">
+          </div>
+          <div class="p-5">
+            <span class="text-xs font-mono text-slate-400 block mb-1">Topography</span>
+            <h3 class="text-lg font-bold text-white mb-2">Classified Hillshade Visualization</h3>
+            <p class="text-slate-400 text-xs line-clamp-3 leading-relaxed">
+              Multi-directional solar illumination model combined with hypsometric tinting for structural geological interpretation.
+            </p>
+          </div>
+        </div>
+        <div class="px-5 pb-5 pt-2 border-t border-slate-800/60 flex items-center justify-between">
+          <span class="text-xs font-mono text-slate-500">EPSG:32736 (UTM 36S)</span>
+          <button onclick="openModal('./images/Hillshademapclassified.png', 'Classified Hillshade Visualization', 'Multi-directional solar illumination model combined with hypsometric elevation tinting.', 'EPSG:32736 (UTM 36S)', '30m DEM', ['Hillshade Rendering', 'Hypsometry', 'Cartography'])" class="text-xs font-medium text-brand-500 hover:text-brand-400 transition-colors">
+            Expand Artifact <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i>
+          </button>
+        </div>
+      </div>
 
-        // Function to render gallery cards
-        function renderGallery(items) {
-            const container = document.getElementById('galleryGrid');
-            container.innerHTML = '';
+      <!-- Card 7 -->
+      <div class="bg-slate-900 rounded-xl border border-slate-800 overflow-hidden flex flex-col justify-between hover:border-brand-500/50 transition-all group">
+        <div>
+          <div class="relative bg-slate-950 h-52 overflow-hidden flex items-center justify-center p-2">
+            <img src="./images/suitable.png" alt="Multi-Criteria Land Suitability" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300">
+          </div>
+          <div class="p-5">
+            <span class="text-xs font-mono text-brand-500 block mb-1">Spatial Optimization</span>
+            <h3 class="text-lg font-bold text-white mb-2">Multi-Criteria Land Suitability</h3>
+            <p class="text-slate-400 text-xs line-clamp-3 leading-relaxed">
+              Analytical Hierarchy Process (AHP) weighted overlay integrating slope, land cover, road proximity, and environmental constraints.
+            </p>
+          </div>
+        </div>
+        <div class="px-5 pb-5 pt-2 border-t border-slate-800/60 flex items-center justify-between">
+          <span class="text-xs font-mono text-slate-500">EPSG:32736 (UTM 36S)</span>
+          <button onclick="openModal('./images/suitable.png', 'Multi-Criteria Land Suitability', 'Analytical Hierarchy Process (AHP) weighted overlay model combining multiple environmental factors.', 'EPSG:32736 (UTM 36S)', 'Vector/Raster Integration', ['AHP Overlay', 'Suitability Modeling', 'QGIS'])" class="text-xs font-medium text-brand-500 hover:text-brand-400 transition-colors">
+            Expand Artifact <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i>
+          </button>
+        </div>
+      </div>
 
-            items.forEach(item => {
-                const card = document.createElement('div');
-                card.className = 'bg-slate-900 border border-slate-800 rounded-xl overflow-hidden shadow-lg hover:border-sky-500/80 transition duration-300 flex flex-col group';
-                card.innerHTML = `
-                    <div class="relative h-48 bg-geo-950 overflow-hidden cursor-pointer" onclick="openModal(${item.id})">
-                        <img src="${item.image}" alt="${item.title}" 
-                             class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
-                             onerror="this.onerror=null; this.classList.add('hidden'); this.nextElementSibling.classList.remove('hidden');">
-                        <div class="hidden absolute inset-0 bg-geo-950 flex flex-col items-center justify-center p-4 text-center">
-                            <i class="fa-solid fa-map-location-dot text-3xl text-slate-700 mb-2"></i>
-                            <span class="text-[10px] font-mono text-slate-400">${item.image}</span>
-                        </div>
-                        <div class="absolute inset-0 bg-geo-950/40 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
-                            <span class="bg-sky-600 text-white text-xs font-semibold px-3 py-1.5 rounded-full shadow flex items-center gap-1.5">
-                                <i class="fa-solid fa-up-right-and-down-left-from-center text-[10px]"></i> Expand Map Artifact
-                            </span>
-                        </div>
-                    </div>
-                    <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
-                        <div>
-                            <span class="text-[10px] font-mono font-bold text-sky-400 uppercase tracking-wider">${item.catLabel}</span>
-                            <h3 class="text-base font-bold text-white mt-1 group-hover:text-sky-300 transition line-clamp-1">${item.title}</h3>
-                            <p class="text-xs text-slate-400 mt-2 line-clamp-2 font-light">${item.shortDesc}</p>
-                        </div>
-                        <div>
-                            <div class="flex flex-wrap gap-1.5 mb-3">
-                                ${item.tags.slice(0, 3).map(tag => `<span class="text-[10px] font-mono bg-geo-950 text-slate-300 px-2 py-0.5 rounded border border-slate-800">${tag}</span>`).join('')}
-                            </div>
-                            <button onclick="openModal(${item.id})" class="w-full py-2 bg-geo-950 hover:bg-sky-600 text-slate-300 hover:text-white border border-slate-800 hover:border-sky-500 text-xs font-semibold rounded-lg transition duration-200 flex items-center justify-center gap-2">
-                                <i class="fa-solid fa-circle-info text-sky-400"></i> View Technical Details
-                            </button>
-                        </div>
-                    </div>
-                `;
-                container.appendChild(card);
-            });
-        }
+      <!-- Card 8 -->
+      <div class="bg-slate-900 rounded-xl border border-slate-800 overflow-hidden flex flex-col justify-between hover:border-brand-500/50 transition-all group">
+        <div>
+          <div class="relative bg-slate-950 h-52 overflow-hidden flex items-center justify-center p-2">
+            <img src="./images/slopesuitabilitymap.png" alt="Slope Grade Suitability Analysis" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300">
+          </div>
+          <div class="p-5">
+            <span class="text-xs font-mono text-amber-500 block mb-1">Site Engineering</span>
+            <h3 class="text-lg font-bold text-white mb-2">Slope Grade Suitability</h3>
+            <p class="text-slate-400 text-xs line-clamp-3 leading-relaxed">
+              Reclassified slope angles into engineering construction cost classes (&lt;5% optimal, &gt;25% restricted).
+            </p>
+          </div>
+        </div>
+        <div class="px-5 pb-5 pt-2 border-t border-slate-800/60 flex items-center justify-between">
+          <span class="text-xs font-mono text-slate-500">EPSG:32736 (UTM 36S)</span>
+          <button onclick="openModal('./images/slopesuitabilitymap.png', 'Slope Grade Suitability', 'Reclassified slope steepness into engineering construction cost categories.', 'EPSG:32736 (UTM 36S)', '12.5m DEM', ['Slope Reclassification', 'Site Selection', 'QGIS'])" class="text-xs font-medium text-brand-500 hover:text-brand-400 transition-colors">
+            Expand Artifact <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i>
+          </button>
+        </div>
+      </div>
 
-        // Filtering Logic
-        function filterGallery(category) {
-            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
+      <!-- Card 9 -->
+      <div class="bg-slate-900 rounded-xl border border-slate-800 overflow-hidden flex flex-col justify-between hover:border-brand-500/50 transition-all group">
+        <div>
+          <div class="relative bg-slate-950 h-52 overflow-hidden flex items-center justify-center p-2">
+            <img src="./images/webgis.png" alt="3-Tier Mining WebGIS Prototype" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300">
+          </div>
+          <div class="p-5">
+            <span class="text-xs font-mono text-cyan-400 block mb-1">WebGIS Architecture</span>
+            <h3 class="text-lg font-bold text-white mb-2">Mining Portal Interface</h3>
+            <p class="text-slate-400 text-xs line-clamp-3 leading-relaxed">
+              Interactive Leaflet.js dashboard connected to PostgreSQL/PostGIS for automated spatial overlap checking.
+            </p>
+          </div>
+        </div>
+        <div class="px-5 pb-5 pt-2 border-t border-slate-800/60 flex items-center justify-between">
+          <span class="text-xs font-mono text-slate-500">EPSG:4326 (WGS84)</span>
+          <button onclick="openModal('./images/webgis.png', '3-Tier Mining WebGIS Prototype', 'Interactive web interface built with Leaflet.js, HTML5, and PostGIS vector tile serving.', 'EPSG:4326 (WGS84)', 'Vector Web Tiles', ['Leaflet.js', 'PostGIS', 'WebGIS Framework'])" class="text-xs font-medium text-brand-500 hover:text-brand-400 transition-colors">
+            Expand Artifact <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i>
+          </button>
+        </div>
+      </div>
 
-            if (category === 'all') {
-                renderGallery(mapsData);
-            } else {
-                const filtered = mapsData.filter(item => item.category === category);
-                renderGallery(filtered);
-            }
-        }
+      <!-- Card 10 -->
+      <div class="bg-slate-900 rounded-xl border border-slate-800 overflow-hidden flex flex-col justify-between hover:border-brand-500/50 transition-all group">
+        <div>
+          <div class="relative bg-slate-950 h-52 overflow-hidden flex items-center justify-center p-2">
+            <img src="./images/wastemanagement.png" alt="Municipal Solid Waste Facility Siting" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300">
+          </div>
+          <div class="p-5">
+            <span class="text-xs font-mono text-accent-emerald block mb-1">Urban Infrastructure</span>
+            <h3 class="text-lg font-bold text-white mb-2">Waste Facility Site Siting</h3>
+            <p class="text-slate-400 text-xs line-clamp-3 leading-relaxed">
+              Spatial exclusion zoning around water bodies, settlements, and fault lines to identify environmentally safe waste sites.
+            </p>
+          </div>
+        </div>
+        <div class="px-5 pb-5 pt-2 border-t border-slate-800/60 flex items-center justify-between">
+          <span class="text-xs font-mono text-slate-500">EPSG:32736 (UTM 36S)</span>
+          <button onclick="openModal('./images/wastemanagement.png', 'Municipal Solid Waste Facility Siting', 'Buffer and multi-criteria constraint analysis isolating environmentally compliant development zones.', 'EPSG:32736 (UTM 36S)', 'Vector Layers', ['Buffer Analysis', 'Environmental Siting', 'ArcGIS'])" class="text-xs font-medium text-brand-500 hover:text-brand-400 transition-colors">
+            Expand Artifact <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i>
+          </button>
+        </div>
+      </div>
 
-        // Modal Lightbox Logic
-        function openModal(id) {
-            const mapItem = mapsData.find(item => item.id === id);
-            if (!mapItem) return;
+      <!-- Card 11 -->
+      <div class="bg-slate-900 rounded-xl border border-slate-800 overflow-hidden flex flex-col justify-between hover:border-brand-500/50 transition-all group">
+        <div>
+          <div class="relative bg-slate-950 h-52 overflow-hidden flex items-center justify-center p-2">
+            <img src="./images/allservices.png" alt="Urban Service Coverage & Accessibility" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300">
+          </div>
+          <div class="p-5">
+            <span class="text-xs font-mono text-brand-500 block mb-1">Urban Planning</span>
+            <h3 class="text-lg font-bold text-white mb-2">Urban Public Service Network</h3>
+            <p class="text-slate-400 text-xs line-clamp-3 leading-relaxed">
+              Network dataset drive-time isochrone modeling evaluating equity in healthcare, educational, and civic access.
+            </p>
+          </div>
+        </div>
+        <div class="px-5 pb-5 pt-2 border-t border-slate-800/60 flex items-center justify-between">
+          <span class="text-xs font-mono text-slate-500">EPSG:32736 (UTM 36S)</span>
+          <button onclick="openModal('./images/allservices.png', 'Urban Public Service Network Analysis', 'Network Analyst drive-time catchment areas assessing public service distribution equity.', 'EPSG:32736 (UTM 36S)', 'Road Network Vectors', ['Network Analysis', 'Isochrones', 'ArcGIS Pro'])" class="text-xs font-medium text-brand-500 hover:text-brand-400 transition-colors">
+            Expand Artifact <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i>
+          </button>
+        </div>
+      </div>
 
-            document.getElementById('modalCategory').innerText = mapItem.catLabel;
-            document.getElementById('modalTitle').innerText = mapItem.title;
-            document.getElementById('modalDescription').innerText = mapItem.fullDesc;
-            document.getElementById('modalCrs').innerText = mapItem.crs || 'EPSG:32736 (UTM 36S)';
-            document.getElementById('modalResolution').innerText = mapItem.resolution || '30m / Vector';
+      <!-- Card 12 -->
+      <div class="bg-slate-900 rounded-xl border border-slate-800 overflow-hidden flex flex-col justify-between hover:border-brand-500/50 transition-all group">
+        <div>
+          <div class="relative bg-slate-950 h-52 overflow-hidden flex items-center justify-center p-2">
+            <img src="./images/aggregate.png" alt="Spatial Aggregation & Density Analysis" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300">
+          </div>
+          <div class="p-5">
+            <span class="text-xs font-mono text-amber-500 block mb-1">Spatial Analytics</span>
+            <h3 class="text-lg font-bold text-white mb-2">Aggregated Spatial Metrics</h3>
+            <p class="text-slate-400 text-xs line-clamp-3 leading-relaxed">
+              PostGIS grid aggregation calculating spatial density and proximity correlations across urban zones.
+            </p>
+          </div>
+        </div>
+        <div class="px-5 pb-5 pt-2 border-t border-slate-800/60 flex items-center justify-between">
+          <span class="text-xs font-mono text-slate-500">EPSG:32736 (UTM 36S)</span>
+          <button onclick="openModal('./images/aggregate.png', 'Aggregated Spatial Metrics', 'PostGIS fishnet grid binning to aggregate point event density across municipal boundaries.', 'EPSG:32736 (UTM 36S)', 'Custom Hex Grid', ['Spatial Join', 'PostGIS Aggregation', 'QGIS'])" class="text-xs font-medium text-brand-500 hover:text-brand-400 transition-colors">
+            Expand Artifact <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i>
+          </button>
+        </div>
+      </div>
 
-            const modalImg = document.getElementById('modalImage');
-            const modalFallback = document.getElementById('modalImageFallback');
-            const modalPathText = document.getElementById('modalImagePathText');
+      <!-- Card 13 -->
+      <div class="bg-slate-900 rounded-xl border border-slate-800 overflow-hidden flex flex-col justify-between hover:border-brand-500/50 transition-all group">
+        <div>
+          <div class="relative bg-slate-950 h-52 overflow-hidden flex items-center justify-center p-2">
+            <img src="./images/MAPStransitbus.png" alt="Public Transport Bus Route & Stop Accessibility" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300">
+          </div>
+          <div class="p-5">
+            <span class="text-xs font-mono text-cyan-400 block mb-1">Transport Modeling</span>
+            <h3 class="text-lg font-bold text-white mb-2">Transit Accessibility Routing</h3>
+            <p class="text-slate-400 text-xs line-clamp-3 leading-relaxed">
+              GTFS transit network integration evaluating commuter walkability buffers and route efficiency.
+            </p>
+          </div>
+        </div>
+        <div class="px-5 pb-5 pt-2 border-t border-slate-800/60 flex items-center justify-between">
+          <span class="text-xs font-mono text-slate-500">EPSG:32736 (UTM 36S)</span>
+          <button onclick="openModal('./images/MAPStransitbus.png', 'Transit Accessibility Routing', 'GTFS transit feed processing combined with pedestrian street network walkability buffers.', 'EPSG:32736 (UTM 36S)', 'Vector Line/Point', ['GTFS Transit', 'Network Analyst', 'QGIS'])" class="text-xs font-medium text-brand-500 hover:text-brand-400 transition-colors">
+            Expand Artifact <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i>
+          </button>
+        </div>
+      </div>
 
-            modalImg.src = mapItem.image;
-            modalImg.classList.remove('hidden');
-            modalFallback.classList.add('hidden');
+      <!-- Card 14 -->
+      <div class="bg-slate-900 rounded-xl border border-slate-800 overflow-hidden flex flex-col justify-between hover:border-brand-500/50 transition-all group">
+        <div>
+          <div class="relative bg-slate-950 h-52 overflow-hidden flex items-center justify-center p-2">
+            <img src="./images/assignment1final.png" alt="Geospatial Layout & Cartography" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300">
+          </div>
+          <div class="p-5">
+            <span class="text-xs font-mono text-slate-400 block mb-1">Advanced Cartography</span>
+            <h3 class="text-lg font-bold text-white mb-2">Regional Mapping Layout</h3>
+            <p class="text-slate-400 text-xs line-clamp-3 leading-relaxed">
+              Formal cartographic layout design featuring dynamic locator inset maps, precise graticule scales, and vector legends.
+            </p>
+          </div>
+        </div>
+        <div class="px-5 pb-5 pt-2 border-t border-slate-800/60 flex items-center justify-between">
+          <span class="text-xs font-mono text-slate-500">EPSG:32736 (UTM 36S)</span>
+          <button onclick="openModal('./images/assignment1final.png', 'Regional Mapping Layout', 'Publication-quality cartographic layout with locator inset maps and graticules.', 'EPSG:32736 (UTM 36S)', 'Multi-Scale Layout', ['Print Layout', 'Cartography', 'QGIS'])" class="text-xs font-medium text-brand-500 hover:text-brand-400 transition-colors">
+            Expand Artifact <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i>
+          </button>
+        </div>
+      </div>
 
-            modalImg.onerror = function() {
-                modalImg.classList.add('hidden');
-                modalFallback.classList.remove('hidden');
-                modalPathText.innerText = 'File path: ' + mapItem.image;
-            };
+      <!-- Card 15 -->
+      <div class="bg-slate-900 rounded-xl border border-slate-800 overflow-hidden flex flex-col justify-between hover:border-brand-500/50 transition-all group">
+        <div>
+          <div class="relative bg-slate-950 h-52 overflow-hidden flex items-center justify-center p-2">
+            <img src="./images/assignment1final2.png" alt="Geospatial Map Layout Variant" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300">
+          </div>
+          <div class="p-5">
+            <span class="text-xs font-mono text-slate-400 block mb-1">Advanced Cartography</span>
+            <h3 class="text-lg font-bold text-white mb-2">District Thematic Map</h3>
+            <p class="text-slate-400 text-xs line-clamp-3 leading-relaxed">
+              District thematic breakdown displaying choropleth attribute distribution and standardized map annotation.
+            </p>
+          </div>
+        </div>
+        <div class="px-5 pb-5 pt-2 border-t border-slate-800/60 flex items-center justify-between">
+          <span class="text-xs font-mono text-slate-500">EPSG:32736 (UTM 36S)</span>
+          <button onclick="openModal('./images/assignment1final2.png', 'District Thematic Map', 'Choropleth mapping layout utilizing standardized classification methods (Natural Breaks / Jenks).', 'EPSG:32736 (UTM 36S)', 'Vector Polygons', ['Choropleth Mapping', 'Cartography', 'QGIS'])" class="text-xs font-medium text-brand-500 hover:text-brand-400 transition-colors">
+            Expand Artifact <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i>
+          </button>
+        </div>
+      </div>
 
-            // Render Tech Tags
-            const tagsContainer = document.getElementById('modalTags');
-            tagsContainer.innerHTML = mapItem.tags.map(tag => 
-                `<span class="text-[10px] font-mono bg-slate-800 text-sky-300 border border-slate-700 px-2 py-0.5 rounded">${tag}</span>`
-            ).join('');
+      <!-- Card 16 -->
+      <div class="bg-slate-900 rounded-xl border border-slate-800 overflow-hidden flex flex-col justify-between hover:border-brand-500/50 transition-all group">
+        <div>
+          <div class="relative bg-slate-950 h-52 overflow-hidden flex items-center justify-center p-2">
+            <img src="./images/BT.png" alt="Brightness Temperature Extraction" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300">
+          </div>
+          <div class="p-5">
+            <span class="text-xs font-mono text-brand-500 block mb-1">Remote Sensing</span>
+            <h3 class="text-lg font-bold text-white mb-2">At-Sensor Brightness Temp</h3>
+            <p class="text-slate-400 text-xs line-clamp-3 leading-relaxed">
+              Converted Landsat 8 TIRS Band 10 digital numbers (DN) to top-of-atmosphere brightness temperature in Kelvin.
+            </p>
+          </div>
+        </div>
+        <div class="px-5 pb-5 pt-2 border-t border-slate-800/60 flex items-center justify-between">
+          <span class="text-xs font-mono text-slate-500">EPSG:32736 (UTM 36S)</span>
+          <button onclick="openModal('./images/BT.png', 'At-Sensor Brightness Temperature', 'Conversion of Landsat 8 TIRS thermal band to At-Sensor Brightness Temperature.', 'EPSG:32736 (UTM 36S)', '100m Thermal Band', ['Landsat TIRS', 'Planck Function', 'ENVI'])" class="text-xs font-medium text-brand-500 hover:text-brand-400 transition-colors">
+            Expand Artifact <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i>
+          </button>
+        </div>
+      </div>
 
-            // Show Modal
-            const modal = document.getElementById('mapModal');
-            modal.classList.remove('opacity-0', 'pointer-events-none');
-            document.body.classList.add('modal-open');
-        }
+      <!-- Card 17 -->
+      <div class="bg-slate-900 rounded-xl border border-slate-800 overflow-hidden flex flex-col justify-between hover:border-brand-500/50 transition-all group">
+        <div>
+          <div class="relative bg-slate-950 h-52 overflow-hidden flex items-center justify-center p-2">
+            <img src="./images/LSE.png" alt="Land Surface Emissivity Model" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300">
+          </div>
+          <div class="p-5">
+            <span class="text-xs font-mono text-brand-500 block mb-1">Remote Sensing</span>
+            <h3 class="text-lg font-bold text-white mb-2">Land Surface Emissivity</h3>
+            <p class="text-slate-400 text-xs line-clamp-3 leading-relaxed">
+              Estimated emissivity parameters derived from NDVI fractional vegetation cover ($P_v$) for precise land surface temperature modeling.
+            </p>
+          </div>
+        </div>
+        <div class="px-5 pb-5 pt-2 border-t border-slate-800/60 flex items-center justify-between">
+          <span class="text-xs font-mono text-slate-500">EPSG:32736 (UTM 36S)</span>
+          <button onclick="openModal('./images/LSE.png', 'Land Surface Emissivity Model', 'Calculation of LSE from Fractional Vegetation Cover (Pv) derived from NDVI values.', 'EPSG:32736 (UTM 36S)', '30m Resolution', ['Emissivity Modeling', 'Pv Fractional Cover', 'QGIS'])" class="text-xs font-medium text-brand-500 hover:text-brand-400 transition-colors">
+            Expand Artifact <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i>
+          </button>
+        </div>
+      </div>
 
-        function closeModal() {
-            const modal = document.getElementById('mapModal');
-            modal.classList.add('opacity-0', 'pointer-events-none');
-            document.body.classList.remove('modal-open');
-        }
+      <!-- Card 18 -->
+      <div class="bg-slate-900 rounded-xl border border-slate-800 overflow-hidden flex flex-col justify-between hover:border-brand-500/50 transition-all group">
+        <div>
+          <div class="relative bg-slate-950 h-52 overflow-hidden flex items-center justify-center p-2">
+            <img src="./images/NDVI.png" alt="Normalized Difference Vegetation Index" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300">
+          </div>
+          <div class="p-5">
+            <span class="text-xs font-mono text-accent-emerald block mb-1">Vegetation Analysis</span>
+            <h3 class="text-lg font-bold text-white mb-2">NDVI Vegetation Health</h3>
+            <p class="text-slate-400 text-xs line-clamp-3 leading-relaxed">
+              Processed Sentinel-2/Landsat NIR and Red bands to map vegetative vigor, crop health, and biomass density.
+            </p>
+          </div>
+        </div>
+        <div class="px-5 pb-5 pt-2 border-t border-slate-800/60 flex items-center justify-between">
+          <span class="text-xs font-mono text-slate-500">EPSG:32736 (UTM 36S)</span>
+          <button onclick="openModal('./images/NDVI.png', 'Normalized Difference Vegetation Index', 'Band algebra equation (NIR - RED) / (NIR + RED) identifying healthy vegetation canopy cover.', 'EPSG:32736 (UTM 36S)', '10m Sentinel-2', ['NDVI', 'Band Algebra', 'QGIS'])" class="text-xs font-medium text-brand-500 hover:text-brand-400 transition-colors">
+            Expand Artifact <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i>
+          </button>
+        </div>
+      </div>
 
-        // Event listeners for backdrop click and ESC key
-        document.getElementById('mapModal').addEventListener('click', function(e) {
-            if (e.target === this) closeModal();
-        });
+      <!-- Card 19 -->
+      <div class="bg-slate-900 rounded-xl border border-slate-800 overflow-hidden flex flex-col justify-between hover:border-brand-500/50 transition-all group">
+        <div>
+          <div class="relative bg-slate-950 h-52 overflow-hidden flex items-center justify-center p-2">
+            <img src="./images/UHI.png" alt="Urban Heat Island Effect Mapping" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300">
+          </div>
+          <div class="p-5">
+            <span class="text-xs font-mono text-amber-500 block mb-1">Urban Microclimate</span>
+            <h3 class="text-lg font-bold text-white mb-2">Urban Heat Island Intensity</h3>
+            <p class="text-slate-400 text-xs line-clamp-3 leading-relaxed">
+              Derived Land Surface Temperature (LST) variations to isolate localized surface heat anomalies across built environments.
+            </p>
+          </div>
+        </div>
+        <div class="px-5 pb-5 pt-2 border-t border-slate-800/60 flex items-center justify-between">
+          <span class="text-xs font-mono text-slate-500">EPSG:32736 (UTM 36S)</span>
+          <button onclick="openModal('./images/UHI.png', 'Urban Heat Island Intensity Analysis', 'Quantified microclimatic surface temperature elevation relative to surrounding baselines.', 'EPSG:32736 (UTM 36S)', '30m Thermal', ['UHI Modeling', 'LST Analysis', 'QGIS'])" class="text-xs font-medium text-brand-500 hover:text-brand-400 transition-colors">
+            Expand Artifact <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i>
+          </button>
+        </div>
+      </div>
 
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') closeModal();
-        });
+      <!-- Card 20 -->
+      <div class="bg-slate-900 rounded-xl border border-slate-800 overflow-hidden flex flex-col justify-between hover:border-brand-500/50 transition-all group">
+        <div>
+          <div class="relative bg-slate-950 h-52 overflow-hidden flex items-center justify-center p-2">
+            <img src="./images/westdem.png" alt="Digital Elevation Model Mashonaland West" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300">
+          </div>
+          <div class="p-5">
+            <span class="text-xs font-mono text-slate-400 block mb-1">Digital Terrain Modeling</span>
+            <h3 class="text-lg font-bold text-white mb-2">Mashonaland West Elevation</h3>
+            <p class="text-slate-400 text-xs line-clamp-3 leading-relaxed">
+              Seamless DEM mosaic covering Mashonaland West province processed for regional topographic drainage extraction.
+            </p>
+          </div>
+        </div>
+        <div class="px-5 pb-5 pt-2 border-t border-slate-800/60 flex items-center justify-between">
+          <span class="text-xs font-mono text-slate-500">EPSG:32736 (UTM 36S)</span>
+          <button onclick="openModal('./images/westdem.png', 'Mashonaland West Elevation Model', 'SRTM DEM mosaic processed with hydro-enforcement and sink filling routines.', 'EPSG:32736 (UTM 36S)', '30m SRTM', ['DEM Processing', 'Sink Filling', 'SAGA GIS'])" class="text-xs font-medium text-brand-500 hover:text-brand-400 transition-colors">
+            Expand Artifact <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i>
+          </button>
+        </div>
+      </div>
 
-        // Initialize on DOM load
-        document.addEventListener('DOMContentLoaded', () => {
-            renderGallery(mapsData);
-        });
-    </script>
+      <!-- Card 21 -->
+      <div class="bg-slate-900 rounded-xl border border-slate-800 overflow-hidden flex flex-col justify-between hover:border-brand-500/50 transition-all group">
+        <div>
+          <div class="relative bg-slate-950 h-52 overflow-hidden flex items-center justify-center p-2">
+            <img src="./images/Landuselandcover.png" alt="Land Use & Land Cover Classification" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300">
+          </div>
+          <div class="p-5">
+            <span class="text-xs font-mono text-brand-500 block mb-1">Earth Observation</span>
+            <h3 class="text-lg font-bold text-white mb-2">LULC Supervised Classification</h3>
+            <p class="text-slate-400 text-xs line-clamp-3 leading-relaxed">
+              Random Forest supervised classification mapping urban built-up, agriculture, water, and forest cover classes.
+            </p>
+          </div>
+        </div>
+        <div class="px-5 pb-5 pt-2 border-t border-slate-800/60 flex items-center justify-between">
+          <span class="text-xs font-mono text-slate-500">EPSG:32736 (UTM 36S)</span>
+          <button onclick="openModal('./images/Landuselandcover.png', 'LULC Supervised Classification', 'Multi-temporal Random Forest supervised land cover classification algorithm.', 'EPSG:32736 (UTM 36S)', '10m Sentinel-2', ['Random Forest', 'LULC', 'ENVI'])" class="text-xs font-medium text-brand-500 hover:text-brand-400 transition-colors">
+            Expand Artifact <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Card 22 -->
+      <div class="bg-slate-900 rounded-xl border border-slate-800 overflow-hidden flex flex-col justify-between hover:border-brand-500/50 transition-all group">
+        <div>
+          <div class="relative bg-slate-950 h-52 overflow-hidden flex items-center justify-center p-2">
+            <img src="./images/study%20area.png" alt="Geographic Study Area Extent Map" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300">
+          </div>
+          <div class="p-5">
+            <span class="text-xs font-mono text-slate-400 block mb-1">Spatial Framework</span>
+            <h3 class="text-lg font-bold text-white mb-2">Geographic Study Area Extent</h3>
+            <p class="text-slate-400 text-xs line-clamp-3 leading-relaxed">
+              Multi-scale regional location map defining project boundary limits, administrative units, and coordinate reference frames.
+            </p>
+          </div>
+        </div>
+        <div class="px-5 pb-5 pt-2 border-t border-slate-800/60 flex items-center justify-between">
+          <span class="text-xs font-mono text-slate-500">EPSG:32736 (UTM 36S)</span>
+          <button onclick="openModal('./images/study%20area.png', 'Geographic Study Area Extent Map', 'Hierarchical administrative locator map establishing regional spatial context.', 'EPSG:32736 (UTM 36S)', 'Vector Boundary', ['Study Area', 'Cartography', 'QGIS'])" class="text-xs font-medium text-brand-500 hover:text-brand-400 transition-colors">
+            Expand Artifact <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Card 23 -->
+      <div class="bg-slate-900 rounded-xl border border-slate-800 overflow-hidden flex flex-col justify-between hover:border-brand-500/50 transition-all group">
+        <div>
+          <div class="relative bg-slate-950 h-52 overflow-hidden flex items-center justify-center p-2">
+            <img src="./images/sloperisk.png" alt="Geomorphological Slope Risk Map" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300">
+          </div>
+          <div class="p-5">
+            <span class="text-xs font-mono text-amber-500 block mb-1">Geohazard & Risk</span>
+            <h3 class="text-lg font-bold text-white mb-2">Slope Instability Hazard Risk</h3>
+            <p class="text-slate-400 text-xs line-clamp-3 leading-relaxed">
+              Categorized critical gradient thresholds to highlight potential soil failure areas along transportation corridors.
+            </p>
+          </div>
+        </div>
+        <div class="px-5 pb-5 pt-2 border-t border-slate-800/60 flex items-center justify-between">
+          <span class="text-xs font-mono text-slate-500">EPSG:32736 (UTM 36S)</span>
+          <button onclick="openModal('./images/sloperisk.png', 'Slope Instability Hazard Risk', 'Raster slope risk categorizations identifying critical transport corridor vulnerabilities.', 'EPSG:32736 (UTM 36S)', '12.5m DEM', ['Slope Risk', 'Terrain Analysis', 'QGIS'])" class="text-xs font-medium text-brand-500 hover:text-brand-400 transition-colors">
+            Expand Artifact <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Card 24 -->
+      <div class="bg-slate-900 rounded-xl border border-slate-800 overflow-hidden flex flex-col justify-between hover:border-brand-500/50 transition-all group">
+        <div>
+          <div class="relative bg-slate-950 h-52 overflow-hidden flex items-center justify-center p-2">
+            <img src="./images/Ferrous_Minerals.png" alt="Ferrous Mineral Band Ratio Mapping" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300">
+          </div>
+          <div class="p-5">
+            <span class="text-xs font-mono text-brand-500 block mb-1">Mineral Exploration</span>
+            <h3 class="text-lg font-bold text-white mb-2">Ferrous Mineral Band Ratio Map</h3>
+            <p class="text-slate-400 text-xs line-clamp-3 leading-relaxed">
+              Applied SWIR/NIR multispectral band ratios to highlight iron oxide and ferrous mineral occurrences in rock formations.
+            </p>
+          </div>
+        </div>
+        <div class="px-5 pb-5 pt-2 border-t border-slate-800/60 flex items-center justify-between">
+          <span class="text-xs font-mono text-slate-500">EPSG:32736 (UTM 36S)</span>
+          <button onclick="openModal('./images/Ferrous_Minerals.png', 'Ferrous Mineral Band Ratio Map', 'Multispectral band ratio analysis isolating iron oxide spectral signatures.', 'EPSG:32736 (UTM 36S)', '30m Landsat 8', ['Ferrous Ratio', 'Mineral Exploration', 'ENVI'])" class="text-xs font-medium text-brand-500 hover:text-brand-400 transition-colors">
+            Expand Artifact <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Research Section -->
+  <section id="research" class="py-16 bg-slate-900/60 border-y border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mb-12">
+        <span class="text-xs font-mono text-brand-500 tracking-wider uppercase block">ACADEMIC ACCOMPLISHMENTS</span>
+        <h2 class="text-3xl font-extrabold text-white mt-1">Research & Award-Winning Dissertation</h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="bg-slate-900 p-6 rounded-xl border border-slate-800">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="p-3 rounded-lg bg-amber-500/10 text-amber-400 border border-amber-500/20">
+              <i class="fa-solid fa-trophy text-xl"></i>
+            </div>
+            <div>
+              <h3 class="font-bold text-white">Vice Chancellor's Award</h3>
+              <p class="text-xs text-slate-400 font-mono">University of Zimbabwe Research Week</p>
+            </div>
+          </div>
+          <p class="text-slate-300 text-sm leading-relaxed">
+            Awarded top honors for designing and exhibiting an automated WebGIS mining rights portal prototype capable of identifying spatial title overlaps under the Mines and Minerals Act.
+          </p>
+        </div>
+
+        <div class="bg-slate-900 p-6 rounded-xl border border-slate-800">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="p-3 rounded-lg bg-brand-500/10 text-brand-400 border border-brand-500/20">
+              <i class="fa-solid fa-graduation-cap text-xl"></i>
+            </div>
+            <div>
+              <h3 class="font-bold text-white">MSc Geomatics Engineering (Merit)</h3>
+              <p class="text-xs text-slate-400 font-mono">PostGIS & WebGIS Specialization</p>
+            </div>
+          </div>
+          <p class="text-slate-300 text-sm leading-relaxed">
+            Advanced thesis focusing on automated spatial relationships (<code class="text-brand-400">ST_Intersection</code>, <code class="text-brand-400">ST_Overlaps</code>) and dynamic database triggers for spatial cadastre management.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive PostGIS SQL Terminal -->
+  <section id="terminal" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-3xl mb-8">
+      <span class="text-xs font-mono text-accent-emerald tracking-wider uppercase block">INTERACTIVE POSTGIS CONSOLE</span>
+      <h2 class="text-3xl font-extrabold text-white mt-1">Spatial SQL Engine Demonstration</h2>
+    </div>
+
+    <div class="bg-slate-900 rounded-xl border border-slate-800 overflow-hidden shadow-2xl font-mono text-sm">
+      <div class="bg-slate-950 px-4 py-3 border-b border-slate-800 flex items-center justify-between">
+        <div class="flex items-center space-x-2">
+          <span class="w-3 h-3 rounded-full bg-red-500/80 inline-block"></span>
+          <span class="w-3 h-3 rounded-full bg-yellow-500/80 inline-block"></span>
+          <span class="w-3 h-3 rounded-full bg-green-500/80 inline-block"></span>
+          <span class="text-xs text-slate-400 ml-2">postgis_spatial_query.sql — psql (PostgreSQL 16)</span>
+        </div>
+        <span class="text-xs text-slate-500">EPSG:32736</span>
+      </div>
+      <div class="p-6 text-slate-300 overflow-x-auto space-y-4">
+        <div>
+          <span class="text-slate-500">-- Automated Mining Cadastre Overlap Detection Query</span>
+        </div>
+        <div>
+          <span class="text-brand-400 font-bold">SELECT</span><br>
+          &nbsp;&nbsp;a.claim_id <span class="text-brand-400">AS</span> applicant_claim,<br>
+          &nbsp;&nbsp;b.claim_id <span class="text-brand-400">AS</span> existing_claim,<br>
+          &nbsp;&nbsp;<span class="text-accent-emerald">ST_Area</span>(<span class="text-accent-emerald">ST_Intersection</span>(a.geom, b.geom)) / 10000.0 <span class="text-brand-400">AS</span> overlap_hectares,<br>
+          &nbsp;&nbsp;<span class="text-accent-emerald">ST_Overlaps</span>(a.geom, b.geom) <span class="text-brand-400">AS</span> has_spatial_conflict<br>
+          <span class="text-brand-400">FROM</span> mining_claims a<br>
+          <span class="text-brand-400">JOIN</span> mining_claims b <span class="text-brand-400">ON</span> <span class="text-accent-emerald">ST_Intersects</span>(a.geom, b.geom)<br>
+          <span class="text-brand-400">WHERE</span> a.claim_id != b.claim_id <span class="text-brand-400">AND</span> a.status = <span class="text-amber-300">'PENDING'</span>;
+        </div>
+        <div class="pt-2 border-t border-slate-800 text-xs text-slate-400">
+          <span class="text-accent-emerald">✓ Execution time:</span> 14.2ms | Spatial Index: GiST (geom)
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-8 bg-slate-950 border-t border-slate-800 text-center text-slate-500 text-xs">
+    <div class="max-w-7xl mx-auto px-4">
+      <p>© 2026 Nomatter Ndunga, MSc. All Geospatial Map Artifacts Hosted via GitHub Pages.</p>
+    </div>
+  </footer>
+
+  <!-- Lightbox Modal -->
+  <div id="lightbox" class="fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-md hidden flex items-center justify-center p-4">
+    <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto p-6 relative shadow-2xl">
+      <button onclick="closeModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl w-8 h-8 flex items-center justify-center rounded-full bg-slate-800">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div id="modalContent"></div>
+    </div>
+  </div>
+
+  <!-- JavaScript Modal Handler -->
+  <script>
+    function openModal(imgSrc, title, desc, crs, res, tags) {
+      const modal = document.getElementById('lightbox');
+      const content = document.getElementById('modalContent');
+      
+      const encodedSrc = encodeURI(imgSrc);
+      const tagBadges = tags.map(tag => `<span class="px-2.5 py-1 rounded-md bg-brand-500/10 border border-brand-500/30 text-brand-400 text-xs font-mono">${tag}</span>`).join(' ');
+
+      content.innerHTML = `
+        <div class="space-y-6">
+          <div class="bg-slate-950 rounded-xl p-3 border border-slate-800 flex flex-col items-center justify-center max-h-[60vh] overflow-hidden relative">
+            <img src="${encodedSrc}" alt="${title}" class="max-h-[50vh] w-auto object-contain rounded-lg">
+            <a href="${encodedSrc}" target="_blank" class="mt-3 text-xs font-mono text-brand-400 hover:text-brand-300 underline flex items-center gap-1">
+              <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i> Open Full Raw Image Asset
+            </a>
+          </div>
+          <div>
+            <h3 class="text-2xl font-bold text-white">${title}</h3>
+            <p class="text-slate-300 text-sm mt-2 leading-relaxed">${desc}</p>
+          </div>
+          <div class="grid grid-cols-2 gap-4 bg-slate-950 p-4 rounded-xl border border-slate-800 text-xs font-mono">
+            <div>
+              <span class="text-slate-500 block">COORDINATE REFERENCE SYSTEM</span>
+              <span class="text-brand-400 font-bold">${crs}</span>
+            </div>
+            <div>
+              <span class="text-slate-500 block">SPATIAL RESOLUTION</span>
+              <span class="text-accent-emerald font-bold">${res}</span>
+            </div>
+          </div>
+          <div>
+            <span class="text-xs font-mono text-slate-500 block mb-2">ALGORITHMS & TOOLS</span>
+            <div class="flex flex-wrap gap-2">${tagBadges}</div>
+          </div>
+        </div>
+      `;
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('lightbox');
+      modal.classList.add('hidden');
+      document.body.style.overflow = 'auto';
+    }
+
+    document.getElementById('lightbox').addEventListener('click', function(e) {
+      if (e.target === this) closeModal();
+    });
+  </script>
 </body>
 </html>
