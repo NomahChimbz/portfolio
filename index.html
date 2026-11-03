@@ -35,11 +35,11 @@
         </div>
       </div>
       <div class="hidden md:flex items-center space-x-6 text-sm font-medium text-slate-300">
-        <a href="#about" class="hover:text-brand-500 transition-colors">About</a>
-        <a href="#experience" class="hover:text-brand-500 transition-colors">Experience</a>
-        <a href="#projects" class="hover:text-brand-500 transition-colors">Map Artifacts (24)</a>
-        <a href="#credentials" class="hover:text-brand-500 transition-colors">Education & Certs</a>
-        <a href="#contact" class="hover:text-brand-500 transition-colors">Contact</a>
+        <a href="#about" data-nav class="hover:text-amber-400 transition-colors py-1">About</a>
+        <a href="#experience" data-nav class="hover:text-amber-400 transition-colors py-1">Experience</a>
+        <a href="#projects" data-nav class="hover:text-amber-400 transition-colors py-1">Map Artifacts (24)</a>
+        <a href="#credentials" data-nav class="hover:text-amber-400 transition-colors py-1">Education & Certs</a>
+        <a href="#contact" data-nav class="hover:text-amber-400 transition-colors py-1">Contact</a>
       </div>
       <a href="https://github.com/NomahChimbz/portfolio" target="_blank" class="px-4 py-2 rounded-lg bg-brand-600 hover:bg-brand-500 text-white font-medium text-sm transition-all shadow-md shadow-brand-600/20 flex items-center gap-2">
         <i class="fa-brands fa-github"></i> GitHub Repo
@@ -48,7 +48,7 @@
   </nav>
 
   <!-- Hero / About Section -->
-  <header id="about" class="py-20 relative overflow-hidden bg-gradient-to-b from-slate-900 via-slate-950 to-slate-950 border-b border-slate-800/60">
+  <header id="about" class="py-20 relative overflow-hidden bg-gradient-to-b from-slate-900 via-slate-950 to-slate-950 border-b border-slate-800/60 scroll-mt-16">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       <div class="grid lg:grid-cols-12 gap-12 items-center">
         <div class="lg:col-span-7 space-y-6">
@@ -88,7 +88,7 @@
   </header>
 
   <!-- Dedicated Contact Information Section -->
-  <section id="contact" class="py-12 bg-slate-900/80 border-b border-slate-800">
+  <section id="contact" class="py-12 bg-slate-900/80 border-b border-slate-800 scroll-mt-16">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="mb-6">
         <span class="text-xs font-mono text-accent-emerald tracking-wider uppercase block">GET IN TOUCH</span>
@@ -121,7 +121,7 @@
   </section>
 
   <!-- Professional Experience Section -->
-  <section id="experience" class="py-16 bg-slate-950 border-b border-slate-800">
+  <section id="experience" class="py-16 bg-slate-950 border-b border-slate-800 scroll-mt-16">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="mb-12">
         <span class="text-xs font-mono text-brand-500 tracking-wider uppercase block">CAREER HISTORY</span>
@@ -188,7 +188,7 @@
   </section>
 
   <!-- Projects Grid (24 Map Artifacts) -->
-  <main id="projects" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <main id="projects" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-16">
     <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
       <div>
         <span class="text-xs font-mono text-brand-500 tracking-wider uppercase block">TECHNICAL PORTFOLIO ARTIFACTS</span>
@@ -734,7 +734,7 @@
   </main>
 
   <!-- Education & Certifications Section -->
-  <section id="credentials" class="py-16 bg-slate-900/60 border-y border-slate-800">
+  <section id="credentials" class="py-16 bg-slate-900/60 border-y border-slate-800 scroll-mt-16">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="max-w-3xl mb-12">
         <span class="text-xs font-mono text-brand-500 tracking-wider uppercase block">QUALIFICATIONS & AWARDS</span>
@@ -838,7 +838,7 @@
     </div>
   </div>
 
-  <!-- JavaScript Modal Handler -->
+  <!-- JavaScript Modal & Scroll-Spy Highlight Handler -->
   <script>
     function openModal(imgSrc, title, desc, crs, res, tags) {
       const modal = document.getElementById('lightbox');
@@ -887,6 +887,34 @@
 
     document.getElementById('lightbox').addEventListener('click', function(e) {
       if (e.target === this) closeModal();
+    });
+
+    // Scroll-Spy Active Nav Highlight Script
+    window.addEventListener('DOMContentLoaded', () => {
+      const sections = document.querySelectorAll('header[id], section[id], main[id]');
+      const navLinks = document.querySelectorAll('nav a[data-nav]');
+
+      function highlightNavOnScroll() {
+        let scrollY = window.pageYOffset;
+
+        sections.forEach(section => {
+          const sectionHeight = section.offsetHeight;
+          const sectionTop = section.offsetTop - 100;
+          const sectionId = section.getAttribute('id');
+
+          if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+            navLinks.forEach(link => {
+              link.classList.remove('text-amber-400', 'font-semibold');
+              if (link.getAttribute('href') === '#' + sectionId) {
+                link.classList.add('text-amber-400', 'font-semibold');
+              }
+            });
+          }
+        });
+      }
+
+      window.addEventListener('scroll', highlightNavOnScroll);
+      highlightNavOnScroll();
     });
   </script>
 </body>
