@@ -711,26 +711,23 @@
       <div class="bg-slate-900 rounded-xl border border-slate-800 overflow-hidden flex flex-col justify-between hover:border-brand-500/50 transition-all group">
         <div>
           <div class="relative bg-slate-950 h-52 overflow-hidden flex items-center justify-center p-2">
-            <img src="./images/Ferrous_Minerals.png" alt="Ferrous Mineral Band Ratio Mapping" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300">
+            <img src="./images/silicamap.png" alt="Silica Map" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300">
           </div>
           <div class="p-5">
             <span class="text-xs font-mono text-brand-500 block mb-1">Mineral Exploration</span>
-            <h3 class="text-lg font-bold text-white mb-2">Ferrous Mineral Band Ratio Map</h3>
+            <h3 class="text-lg font-bold text-white mb-2">Silica Map</h3>
             <p class="text-slate-400 text-xs line-clamp-3 leading-relaxed">
-              Applied SWIR/NIR multispectral band ratios to highlight iron oxide and ferrous mineral occurrences in rock formations.
+              Applied thermal infrared and SWIR band ratios to map silica-rich lithological units and quartz occurrences in rock formations.
             </p>
           </div>
         </div>
         <div class="px-5 pb-5 pt-2 border-t border-slate-800/60 flex items-center justify-between">
           <span class="text-xs font-mono text-slate-500">EPSG:32736 (UTM 36S)</span>
-          <button onclick="openModal('./images/silicamap.png', 'Silica Map', 'Multispectral band ratio analysis isolating iron oxide spectral signatures.', 'EPSG:32736 (UTM 36S)', '30m Landsat 8', ['Ferrous Ratio', 'Mineral Exploration', 'ENVI'])" class="text-xs font-medium text-brand-500 hover:text-brand-400 transition-colors">
+          <button onclick="openModal('./images/silicamap.png', 'Silica Map', 'Applied thermal infrared and SWIR band ratios to map silica-rich lithological units and quartz occurrences in rock formations.', 'EPSG:32736 (UTM 36S)', '30m Landsat 8 / ASTER', ['Silica Index', 'Mineral Exploration', 'ENVI'])" class="text-xs font-medium text-brand-500 hover:text-brand-400 transition-colors">
             Expand Artifact <i class="fa-solid fa-arrow-up-right-from-square ml-1"></i>
           </button>
         </div>
       </div>
-
-    </div>
-  </main>
 
   <!-- Education & Certifications Section -->
   <section id="credentials" class="py-16 bg-slate-900/60 border-y border-slate-800">
